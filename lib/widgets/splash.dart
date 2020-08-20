@@ -11,6 +11,16 @@ class _Splash extends State<Splash> {
   bool _offstage = false;
   // final containerPage = ContainerPage();
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3)).then((value) {
+      setState(() {
+        _offstage = true;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.topLeft,
@@ -31,18 +41,18 @@ class _Splash extends State<Splash> {
             ),
           ),
         ),
-        Offstage(
-          child: SafeArea(
-            child: CountButton(
-              countFinshCallback: (bool val) {
-                this.setState(() {
-                  _offstage = val;
-                });
-              },
-            ),
-          ),
-          offstage: _offstage,
-        )
+        // Offstage(
+        //   child: SafeArea(
+        //     child: CountButton(
+        //       countFinshCallback: (bool val) {
+        //         this.setState(() {
+        //           _offstage = val;
+        //         });
+        //       },
+        //     ),
+        //   ),
+        //   offstage: _offstage,
+        // )
       ],
     );
   }
